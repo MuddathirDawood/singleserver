@@ -1,10 +1,11 @@
 const express = require('express');
+require('dotenv').config();
 const bodyParse = require('body-parser');
 const cors = require('cors');
 const app = express();
 
 app.use(cors(), bodyParse.json())
-app.listen(3000, ()=>{console.log('Server is running at port 3000')});
+app.listen(process.env.Port, ()=>{console.log('Server is running at port 3000')});
 
 let courses = [
     {id: 1, name: 'Software Engineering'},
