@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParse = require('body-parser');
+const cors = require('cors');
 const app = express();
 
-app.use(bodyParse.json())
+app.use(cors(), bodyParse.json())
 app.listen(3000, ()=>{console.log('Server is running at port 3000')});
 
 let courses = [
