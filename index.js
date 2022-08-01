@@ -1,14 +1,14 @@
 const express = require('express');
 require('dotenv').config();
-const bodyParse = require('body-parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const { urlencoded } = require('express');
 const app = express();
+const router = express.Router();
 
-app.use(cors(), express.json(), urlencoded({
+app.use(router, cors(), express.json(), express.urlencoded({
     extended: true
 }))
-app.listen(process.env.Port, ()=>{console.log(`Server is running at port 3000 ${process.env.Port}`)});
+app.listen(process.env.Port, ()=>{console.log(`Server is running at port ${process.env.Port}`)});
 
 let courses = [
     {id: 1, name: 'Software Engineering'},
@@ -16,15 +16,15 @@ let courses = [
     {id: 3, name: "Database Management" }
     ];
 
-app.get('/', (req, res)=>{
+router.get('/', (req, res)=>{
     res.send(JSON.stringify(courses));
 })
 
-app.get('/courses', (req, res)=>{
+router.get('/courses', (req, res)=>{
     res.redirect('/');
 })
 
-app.get('/courses/:id',(req, res)=>{
+router.get('/courses/:id',(req, res)=>{
     const index = parseInt(req.params.id) -1
     if (index > courses.length) {
         res.send('<h1>There is no record with this id</h1>')
