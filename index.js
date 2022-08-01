@@ -8,7 +8,7 @@ const router = express.Router();
 app.use(router, cors(), express.json(), express.urlencoded({
     extended: true
 }))
-app.listen(process.env.Port, ()=>{console.log(`Server is running at port ${process.env.Port}`)});
+app.listen(process.env.PORT, ()=>{console.log(`Server is running at port ${process.env.PORT}`)});
 
 let courses = [
     {id: 1, name: 'Software Engineering'},
