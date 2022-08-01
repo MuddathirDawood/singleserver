@@ -2,10 +2,13 @@ const express = require('express');
 require('dotenv').config();
 const bodyParse = require('body-parser');
 const cors = require('cors');
+const { urlencoded } = require('express');
 const app = express();
 
-app.use(cors(), bodyParse.json())
-app.listen(process.env.Port, ()=>{console.log('Server is running at port 3000')});
+app.use(cors(), express.json(), urlencoded({
+    extended: true
+}))
+app.listen(process.env.Port, ()=>{console.log(`Server is running at port 3000 ${process.env.Port}`)});
 
 let courses = [
     {id: 1, name: 'Software Engineering'},
